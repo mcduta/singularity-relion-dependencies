@@ -147,7 +147,9 @@ From: nvidia/cuda:9.0-devel-centos7
 #============================================================#
 
 %test
-    mpicc --version
-    cmake --version
-    fftw-wisdom
-    fltk-config --version
+    echo " === Minimal installation testing..."
+    command -v mpirun --version       >/dev/null 2>&1 && { echo >&2 " OpenMPI: PASSED"; } || { echo >&2 " OpenMPI: ERROR"; }
+    command -v cmake --version        >/dev/null 2>&1 && { echo >&2 " CMake:   PASSED"; } || { echo >&2 " CMake:   ERROR"; }
+    command -v fftw-wisdom            >/dev/null 2>&1 && { echo >&2 " FFTW:    PASSED"; } || { echo >&2 " FFTW:    ERROR"; }
+    command -v fltk-config --version  >/dev/null 2>&1 && { echo >&2 " FLTK:    PASSED"; } || { echo >&2 " FLTK:    ERROR"; }
+    echo " === ... finished testing."
